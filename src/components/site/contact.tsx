@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, GraduationCap, ArrowRight, Check, Loader2 } from "lucide-react";
+import { Mail, MapPin, ArrowRight, Check, Loader2 } from "lucide-react";
 import { publicContent, type Locale } from "@/lib/public-content";
 import { SectionLabel } from "./shell";
 
@@ -63,7 +63,6 @@ export function Contact({ locale = "pl" }: { locale?: Locale }) {
   const infoIcons = [
     <Mail className="h-5 w-5" />,
     <MapPin className="h-5 w-5" />,
-    <GraduationCap className="h-5 w-5" />,
   ];
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {

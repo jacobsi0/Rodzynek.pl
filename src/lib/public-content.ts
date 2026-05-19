@@ -99,7 +99,7 @@ export const publicContent = {
       languageAria: "Switch to English",
       openMenu: "Otwórz menu",
       closeMenu: "Zamknij menu",
-      copyright: "© 2025 Rodzynek.pl · CLARA / Yourope · UŁ",
+      copyright: "© 2025 Rodzynek.pl",
       madeBy: "Made with 🤎 by jacobs ®",
     },
     hero: {
@@ -235,7 +235,7 @@ export const publicContent = {
           "Pomagamy klasom i grupom rówieśniczym odbudowywać kontakt, zaufanie i poczucie wspólnoty.",
         ],
         [
-          "Szkolimy liderów",
+          "Szkolimy liderów równieśniczych",
           "Wzmacniamy osoby, które mogą później prowadzić działania rówieśnicze w swoich szkołach.",
         ],
         [
@@ -275,7 +275,6 @@ export const publicContent = {
       info: [
         ["E-mail", "rodzynekpl.kontakt@gmail.com"],
         ["Baza działań", "Łódź & okolice (i nie tylko)"],
-        ["Uczelnia", "Uniwersytet Łódzki · CLARA / Yourope"],
       ],
       formAria: "Formularz kontaktowy Rodzynek.pl",
       formTitle: "Zaproś Rodzynek 🍇",
@@ -342,7 +341,7 @@ export const publicContent = {
       languageAria: "Przełącz na język polski",
       openMenu: "Open menu",
       closeMenu: "Close menu",
-      copyright: "© 2025 Rodzynek.pl · CLARA / Yourope · University of Lodz",
+      copyright: "© 2025 Rodzynek.pl",
       madeBy: "Made with 🤎 by jacobs ®",
     },
     hero: {
@@ -478,7 +477,7 @@ export const publicContent = {
           "We help classes and peer groups rebuild contact, trust and a sense of community.",
         ],
         [
-          "We train leaders",
+          "We train peer leaders",
           "We strengthen people who can later lead peer activities in their own schools.",
         ],
         [
@@ -514,7 +513,6 @@ export const publicContent = {
       info: [
         ["E-mail", "rodzynekpl.kontakt@gmail.com"],
         ["Base", "Lodz and nearby areas, plus selected other locations"],
-        ["University", "University of Lodz · CLARA / Yourope"],
       ],
       formAria: "Rodzynek.pl contact form",
       formTitle: "Invite Rodzynek 🍇",
