@@ -1,7 +1,7 @@
 import { useMemo, useRef, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, ArrowRight, Check, Loader2 } from "lucide-react";
+import { Mail, MapPin, Instagram, ArrowRight, Check, Loader2 } from "lucide-react";
 import { publicContent, type Locale } from "@/lib/public-content";
 import { SectionLabel } from "./shell";
 
@@ -63,6 +63,7 @@ export function Contact({ locale = "pl" }: { locale?: Locale }) {
   const infoIcons = [
     <Mail className="h-5 w-5" />,
     <MapPin className="h-5 w-5" />,
+    <Instagram className="h-5 w-5" />,
   ];
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -172,6 +173,15 @@ export function Contact({ locale = "pl" }: { locale?: Locale }) {
                   {label === "E-mail" ? (
                     <a
                       href={`mailto:${value}`}
+                      className="text-base font-semibold underline-offset-4 hover:underline"
+                    >
+                      {value}
+                    </a>
+                  ) : label === "Instagram" ? (
+                    <a
+                      href="https://www.instagram.com/rodzynekedu/"
+                      target="_blank"
+                      rel="noreferrer"
                       className="text-base font-semibold underline-offset-4 hover:underline"
                     >
                       {value}

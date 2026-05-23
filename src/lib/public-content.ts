@@ -275,6 +275,7 @@ export const publicContent = {
       info: [
         ["E-mail", "rodzynekpl.kontakt@gmail.com"],
         ["Baza działań", "Łódź & okolice (i nie tylko)"],
+        ["Instagram", "@rodzynekedu"],
       ],
       formAria: "Formularz kontaktowy Rodzynek.pl",
       formTitle: "Zaproś Rodzynek 🍇",
@@ -513,6 +514,7 @@ export const publicContent = {
       info: [
         ["E-mail", "rodzynekpl.kontakt@gmail.com"],
         ["Base", "Lodz and nearby areas, plus selected other locations"],
+        ["Instagram", "@rodzynekedu"],
       ],
       formAria: "Rodzynek.pl contact form",
       formTitle: "Invite Rodzynek 🍇",
