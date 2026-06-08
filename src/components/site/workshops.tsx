@@ -11,7 +11,7 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
     <MicVocal className="h-6 w-6" />,
     <Smartphone className="h-6 w-6" />,
   ];
-  const accents = ["bg-clay", "bg-honey", "bg-ink"] as const;
+  const accents = ["bg-clay", "bg-honey", "bg-ink dark:bg-[#16110f]"] as const;
 
   const toggleExpanded = (index: number) => {
     setExpanded((current) => ({ ...current, [index]: !current[index] }));

@@ -97,6 +97,10 @@ export const publicContent = {
       invite: "Zaproś nas",
       languageLabel: "English",
       languageAria: "Switch to English",
+      theme: {
+        switchToDark: "Włącz tryb ciemny",
+        switchToLight: "Włącz tryb jasny",
+      },
       openMenu: "Otwórz menu",
       closeMenu: "Zamknij menu",
       copyright: "© 2025 Rodzynek.pl",
@@ -340,6 +344,10 @@ export const publicContent = {
       invite: "Invite us",
       languageLabel: "Polski",
       languageAria: "Przełącz na język polski",
+      theme: {
+        switchToDark: "Switch to dark mode",
+        switchToLight: "Switch to light mode",
+      },
       openMenu: "Open menu",
       closeMenu: "Close menu",
       copyright: "© 2025 Rodzynek.pl",

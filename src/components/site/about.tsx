@@ -14,17 +14,19 @@ export function About({ locale = "pl" }: { locale?: Locale }) {
     <section className="bg-background pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="mx-auto grid max-w-7xl items-start gap-16 px-6 md:grid-cols-[0.95fr_1.05fr] md:px-10">
         <div className="reveal relative">
-          <div className="relative overflow-hidden rounded-3xl bg-ink p-9 text-warm shadow-elev">
-            <Quote className="absolute right-6 top-6 h-16 w-16 text-warm/5" />
-            <p className="font-display text-2xl font-light italic leading-snug text-warm/95 md:text-[1.7rem]">
+          <div className="relative overflow-hidden rounded-3xl bg-ink p-9 text-warm shadow-elev dark:bg-[#16110f] dark:text-[#f4ead8]">
+            <Quote className="absolute right-6 top-6 h-16 w-16 text-warm/5 dark:text-[#f4ead8]/5" />
+            <p className="font-display text-2xl font-light italic leading-snug text-warm/95 dark:text-[#f4ead8]/95 md:text-[1.7rem]">
               {t.quoteTitle}
             </p>
-            <p className="mt-5 text-base leading-relaxed text-warm/75">{t.quoteBody}</p>
+            <p className="mt-5 text-base leading-relaxed text-warm/75 dark:text-[#f4ead8]/75">
+              {t.quoteBody}
+            </p>
             <div className="mt-8 flex flex-wrap gap-2">
               {t.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-warm/15 bg-warm/10 px-3.5 py-1 text-xs font-semibold text-warm/85"
+                  className="rounded-full border border-warm/15 bg-warm/10 px-3.5 py-1 text-xs font-semibold text-warm/85 dark:border-[#f4ead8]/15 dark:bg-[#f4ead8]/10 dark:text-[#f4ead8]/85"
                 >
                   {tag}
                 </span>

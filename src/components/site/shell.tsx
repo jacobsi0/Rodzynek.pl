@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, Moon, Sun, X } from "lucide-react";
 import {
   getHomeSectionHref,
   getPublicPath,
@@ -34,6 +34,43 @@ function getNavLinks(locale: Locale) {
     { href: getHomeSectionHref(locale, "project"), label: t.project },
     { href: getHomeSectionHref(locale, "team"), label: t.team },
   ] as const;
+}
+
+function ThemeToggle({ locale }: { locale: Locale }) {
+  const readCurrentTheme = () =>
+    typeof document !== "undefined" && document.documentElement.classList.contains("dark");
+  const [dark, setDark] = useState(false);
+  const t = publicContent[locale].site.theme;
+
+  useEffect(() => {
+    setDark(readCurrentTheme());
+  }, [locale]);
+
+  const toggleTheme = () => {
+    const next = !document.documentElement.classList.contains("dark");
+    document.documentElement.classList.toggle("dark", next);
+    setDark(next);
+    try {
+      localStorage.setItem("rodzynek-theme", next ? "dark" : "light");
+    } catch {
+      // Theme persistence is progressive enhancement.
+    }
+  };
+
+  const active = dark;
+
+  return (
+    <button
+      type="button"
+      aria-label={active ? t.switchToLight : t.switchToDark}
+      aria-pressed={active}
+      title={active ? t.switchToLight : t.switchToDark}
+      onClick={toggleTheme}
+      className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-warm text-ink-soft shadow-soft transition hover:border-clay hover:text-clay focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+    >
+      {active ? <Sun className="h-4.5 w-4.5" /> : <Moon className="h-4.5 w-4.5" />}
+    </button>
+  );
 }
 
 function Nav({
@@ -85,6 +122,7 @@ function Nav({
           >
             {t.languageLabel}
           </a>
+          <ThemeToggle locale={locale} />
           <Link
             href={getHomeSectionHref(locale, "contact")}
             className="hidden md:inline-flex items-center gap-1.5 rounded-full bg-clay px-4 py-2 text-sm font-semibold text-primary-foreground shadow-soft transition hover:opacity-90"
@@ -137,7 +175,7 @@ function Footer({ locale }: { locale: Locale }) {
   const navLinks = getNavLinks(locale);
 
   return (
-    <footer className="bg-ink text-warm/65">
+    <footer className="bg-ink text-warm/65 dark:bg-[#16110f] dark:text-[#f4ead8]/65">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-6 py-10 text-center md:flex-row md:px-10 md:text-left">
         <a href={getPublicPath(locale, "home")} className="flex items-center gap-3">
           <img src="/logo-full.png" alt="Rodzynek.pl" className="h-12 w-auto rounded-lg" />
@@ -145,19 +183,22 @@ function Footer({ locale }: { locale: Locale }) {
         <ul className="flex flex-wrap items-center justify-center gap-6 text-sm">
           {navLinks.map((l) => (
             <li key={l.href}>
-              <a href={l.href} className="transition hover:text-warm">
+              <a href={l.href} className="transition hover:text-warm dark:hover:text-[#f4ead8]">
                 {l.label}
               </a>
             </li>
           ))}
           <li>
-            <a href={getHomeSectionHref(locale, "contact")} className="transition hover:text-warm">
+            <a
+              href={getHomeSectionHref(locale, "contact")}
+              className="transition hover:text-warm dark:hover:text-[#f4ead8]"
+            >
               {t.contact}
             </a>
           </li>
         </ul>
-        <span className="text-xs text-warm/45">{t.copyright}</span>
-        <span className="text-xs text-warm/45">{t.madeBy}</span>
+        <span className="text-xs text-warm/45 dark:text-[#f4ead8]/45">{t.copyright}</span>
+        <span className="text-xs text-warm/45 dark:text-[#f4ead8]/45">{t.madeBy}</span>
       </div>
     </footer>
   );

@@ -89,6 +89,45 @@
   --gradient-clay: linear-gradient(135deg, var(--clay) 0%, oklch(0.55 0.12 50) 100%);
 }
 
+:root.dark {
+  color-scheme: dark;
+
+  --cream: oklch(0.17 0.026 58);
+  --warm: oklch(0.225 0.028 62);
+  --ink: oklch(0.93 0.018 82);
+  --ink-soft: oklch(0.78 0.024 78);
+  --muted-fg: oklch(0.68 0.022 78);
+  --clay: oklch(0.73 0.105 58);
+  --clay-soft: oklch(0.315 0.048 58);
+  --honey: oklch(0.8 0.13 72);
+  --sand: oklch(0.275 0.028 70);
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: oklch(0.235 0.027 62);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.235 0.027 62);
+  --popover-foreground: var(--ink);
+  --primary: var(--clay);
+  --primary-foreground: oklch(0.16 0.025 58);
+  --secondary: var(--clay-soft);
+  --secondary-foreground: oklch(0.88 0.055 74);
+  --muted: var(--sand);
+  --muted-foreground: var(--muted-fg);
+  --accent: var(--honey);
+  --accent-foreground: oklch(0.16 0.025 58);
+  --destructive: oklch(0.68 0.17 25);
+  --destructive-foreground: oklch(0.98 0.01 80);
+  --border: oklch(0.34 0.028 68);
+  --input: oklch(0.34 0.028 68);
+  --ring: var(--clay);
+
+  --shadow-soft: 0 8px 28px -12px oklch(0.03 0.01 60 / 0.5);
+  --shadow-elev: 0 28px 70px -24px oklch(0.02 0.01 60 / 0.72);
+  --gradient-warm: linear-gradient(135deg, oklch(0.25 0.046 58) 0%, oklch(0.31 0.055 42) 100%);
+  --gradient-clay: linear-gradient(135deg, var(--clay) 0%, oklch(0.66 0.12 45) 100%);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);

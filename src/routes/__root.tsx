@@ -99,8 +99,13 @@ function RootShell({ children }: { children: React.ReactNode }) {
   const locale = getLocaleForPath(pathname);
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(localStorage.getItem("rodzynek-theme")==="dark")document.documentElement.classList.add("dark");}catch{}`,
+          }}
+        />
         <HeadContent />
       </head>
       <body>
