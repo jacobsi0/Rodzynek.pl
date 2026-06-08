@@ -294,7 +294,7 @@ export const publicContent = {
       },
       options: [
         "Warsztat dla szkoły ponadpodstawowej",
-        "Warsztat dla szkoły podstawowej kl. 7-8)",
+        "Warsztat dla szkoły podstawowej (kl. 7-8)",
         "Inne - opisz poniżej",
       ],
       buttons: {
@@ -536,7 +536,7 @@ export const publicContent = {
       },
       options: [
         "Workshop for secondary school",
-        "Workshop for primary school grades 7-8)",
+        "Workshop for primary school (grades 7-8)",
         "Other - describe below",
       ],
       buttons: {
