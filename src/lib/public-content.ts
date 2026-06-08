@@ -293,9 +293,8 @@ export const publicContent = {
         website: "Strona www",
       },
       options: [
-        "Warsztat dla uczniów (szkoła ponadpodstawowa)",
-        "Warsztat dla uczniów (szkoła podstawowa kl. 7–8)",
-        "Szkolenie dla nauczycieli / pedagogów",
+        "Warsztat dla szkoły ponadpodstawowej",
+        "Warsztat dla szkoły podstawowej kl. 7-8)",
         "Inne - opisz poniżej",
       ],
       buttons: {
@@ -536,9 +535,8 @@ export const publicContent = {
         website: "Website",
       },
       options: [
-        "Workshop for students (secondary school)",
-        "Workshop for students (primary school grades 7-8)",
-        "Training for teachers / school counselors",
+        "Workshop for secondary school",
+        "Workshop for primary school grades 7-8)",
         "Other - describe below",
       ],
       buttons: {
