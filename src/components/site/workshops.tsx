@@ -7,7 +7,7 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
   const t = publicContent[locale].workshops;
   const icons = [<Puzzle className="h-6 w-6" />, <Smartphone className="h-6 w-6" />];
-  const accents = ["bg-clay", "bg-ink dark:bg-[#16110f]"] as const;
+  const accents = ["bg-clay", "bg-clay"] as const;
 
   const toggleExpanded = (index: number) => {
     setExpanded((current) => ({ ...current, [index]: !current[index] }));
