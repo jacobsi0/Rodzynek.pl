@@ -174,6 +174,8 @@ export const publicContent = {
         after: " nią.",
       },
       availabilityNotice: "Pozostały 3 miejsca na warsztaty w nadchodzącym roku szkolnym (26-27).",
+      capacityNotice:
+        "Jesteśmy w stanie zrealizować maksymalnie 4 warsztaty w roku szkolnym, aby zapewnić pełne zaangażowanie oraz najwyższą jakość prowadzonych działań.",
       showMore: "Pokaż więcej",
       showLess: "Pokaż mniej",
       formatLabel: "Forma:",
@@ -416,6 +418,8 @@ export const publicContent = {
         after: " them.",
       },
       availabilityNotice: "Only 3 spots left for workshops in the upcoming school year (26-27).",
+      capacityNotice:
+        "To ensure full engagement and the highest quality of our activities, we limit ourselves to a maximum of 4 workshops per school year.",
       showMore: "Show more",
       showLess: "Show less",
       formatLabel: "Format:",

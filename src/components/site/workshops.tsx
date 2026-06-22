@@ -32,6 +32,9 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
           <p className="mt-5 text-xl font-semibold leading-relaxed text-clay">
             {t.availabilityNotice}
           </p>
+          <p className="mt-2 text-lg font-medium leading-relaxed text-muted-foreground">
+            {t.capacityNotice}
+          </p>
         </div>
         <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-2">
           {t.items.map((workshop, i) => (
