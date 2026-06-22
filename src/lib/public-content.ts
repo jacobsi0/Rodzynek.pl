@@ -182,21 +182,16 @@ export const publicContent = {
         {
           title: "“Masz głos” - warsztat tworzony RAZEM z młodzieżą",
           intro:
-            "Nie przychodzimy z gotowymi rozwiązaniami, narzucanymi działaniami. Przychodzimy po to, żeby je wypracować z młodzieżą, bo to ona wie czego potrzebuje!",
+            "Nie przychodzimy z gotowymi rozwiązaniami ani narzucanymi działaniami. Dajemy narzędzia i bezpieczną przestrzeń, a młodzież mówi, co jest dla niej ważne - bo to ona najlepiej wie, czego potrzebuje.",
+          body: [
+            "Na warsztacie nie ma wykładów - są ćwiczenia, rozmowa i pomysły osób, które znają szkolną codzienność od środka.",
+          ],
           detailsTitle: "Podczas warsztatu:",
           details: [
-            "zastanowimy się, skąd bierze się presja i gdzie najczęściej doświadcza jej młodzież,",
-            "wymyślimy, jak na nią reagować - po swojemu, po ludzku, bez udawania,",
-            "sprawdzimy, co działa w Waszej szkole, a co nie.",
-          ],
-          tags: [],
-        },
-        {
-          title: "To WY macie głos.",
-          intro: "My dajemy narzędzia i bezpieczną przestrzeń - Wy mówicie, co jest dla Was ważne.",
-          body: [
-            "Na warsztacie nie ma wykładów, są ćwiczenia, rozmowa i pomysły młodzieży, dla której rzeczywistość szkolna jest codziennością.",
-            "Na ich podstawie powstanie autorski scenariusz, który potem mogą prowadzić sami uczniowie - dla innych klas.",
+            "zastanowimy się, skąd bierze się presja i gdzie najczęściej pojawia się w szkolnej codzienności,",
+            "wymyślimy, jak reagować na nią po swojemu, po ludzku, bez udawania,",
+            "sprawdzimy, co działa w Waszej szkole, a co wymaga zmiany,",
+            "zbierzemy pomysły, z których może powstać autorski scenariusz prowadzony później przez uczniów dla innych klas.",
           ],
           audience: "klasy 7-8 i 1-4 liceum",
           tags: ["60 minut"],
@@ -429,21 +424,16 @@ export const publicContent = {
         {
           title: '"You have a voice" - a workshop co-created with young people',
           intro:
-            "We do not arrive with ready-made answers or imposed activities. We come to work them out with young people, because they know what they need.",
+            "We do not arrive with ready-made answers or imposed activities. We provide tools and a safe space, while young people name what matters to them, because they know best what they need.",
+          body: [
+            "There are no lectures here: there are exercises, conversation and ideas from students who know school reality from the inside.",
+          ],
           detailsTitle: "During the workshop:",
           details: [
-            "we explore where pressure comes from and where young people experience it most often,",
+            "we explore where pressure comes from and where it appears most often in everyday school life,",
             "we create ways to respond to it in a natural, human way, without pretending,",
-            "we check what works in your school and what does not.",
-          ],
-          tags: [],
-        },
-        {
-          title: "Your voice matters.",
-          intro: "We provide tools and a safe space - you say what matters to you.",
-          body: [
-            "There are no lectures in this workshop. There are exercises, conversation and ideas from young people who live school reality every day.",
-            "Those ideas become an original workshop scenario that students can later lead for other classes.",
+            "we check what works in your school and what needs to change,",
+            "we collect ideas that can become an original scenario later led by students for other classes.",
           ],
           audience: "grades 7-8 and secondary school students",
           tags: ["60 minutes"],

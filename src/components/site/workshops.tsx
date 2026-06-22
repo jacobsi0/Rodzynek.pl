@@ -1,17 +1,13 @@
 import { useState } from "react";
-import { ChevronDown, MicVocal, Puzzle, Smartphone } from "lucide-react";
+import { ChevronDown, Puzzle, Smartphone } from "lucide-react";
 import { publicContent, type Locale } from "@/lib/public-content";
 import { SectionLabel, SectionTitle } from "./shell";
 
 export function Workshops({ locale = "pl" }: { locale?: Locale }) {
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
   const t = publicContent[locale].workshops;
-  const icons = [
-    <Puzzle className="h-6 w-6" />,
-    <MicVocal className="h-6 w-6" />,
-    <Smartphone className="h-6 w-6" />,
-  ];
-  const accents = ["bg-clay", "bg-honey", "bg-ink dark:bg-[#16110f]"] as const;
+  const icons = [<Puzzle className="h-6 w-6" />, <Smartphone className="h-6 w-6" />];
+  const accents = ["bg-clay", "bg-ink dark:bg-[#16110f]"] as const;
 
   const toggleExpanded = (index: number) => {
     setExpanded((current) => ({ ...current, [index]: !current[index] }));
@@ -37,7 +33,7 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
             {t.availabilityNotice}
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-5xl gap-6 md:grid-cols-2">
           {t.items.map((workshop, i) => (
             <article
               key={workshop.title}
