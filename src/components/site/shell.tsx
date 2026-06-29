@@ -36,7 +36,7 @@ function getNavLinks(locale: Locale) {
   ] as const;
 }
 
-function ThemeToggle({ locale }: { locale: Locale }) {
+export function ThemeToggle({ locale }: { locale: Locale }) {
   const readCurrentTheme = () =>
     typeof document !== "undefined" && document.documentElement.classList.contains("dark");
   const [dark, setDark] = useState(false);

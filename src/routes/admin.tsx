@@ -15,6 +15,7 @@ import {
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "@/components/site/shell";
 
 type Submission = {
   id: string;
@@ -387,6 +388,9 @@ function AdminPage() {
   if (checkingSession) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-warm px-6 text-ink">
+        <div className="fixed right-4 top-4 md:right-8 md:top-6">
+          <ThemeToggle locale="pl" />
+        </div>
         <RefreshCw className="h-5 w-5 animate-spin text-clay" />
       </main>
     );
@@ -395,6 +399,9 @@ function AdminPage() {
   if (!authenticated) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-warm px-6 py-12 text-ink">
+        <div className="fixed right-4 top-4 md:right-8 md:top-6">
+          <ThemeToggle locale="pl" />
+        </div>
         <form
           onSubmit={handleLogin}
           className="w-full max-w-sm rounded-2xl border border-border bg-card p-7 shadow-soft"
@@ -450,6 +457,7 @@ function AdminPage() {
             </p>
           </div>
           <div className="flex flex-wrap gap-2">
+            <ThemeToggle locale="pl" />
             <Button
               type="button"
               variant="outline"
@@ -526,7 +534,9 @@ function AdminPage() {
                     </td>
                     <td className="px-4 py-3">{submission.organization}</td>
                     <td className="px-4 py-3">{submission.topic}</td>
-                    <td className="px-4 py-3 font-medium text-clay">{submission.timeframe || "-"}</td>
+                    <td className="px-4 py-3 font-medium text-clay">
+                      {submission.timeframe || "-"}
+                    </td>
                     <td className="max-w-md px-4 py-3 text-muted-foreground">
                       {submission.message || "-"}
                     </td>
