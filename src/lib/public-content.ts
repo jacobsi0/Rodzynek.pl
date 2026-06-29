@@ -287,6 +287,7 @@ export const publicContent = {
         email: ["E-mail", "anna@szkola.edu.pl"],
         org: ["Instytucja / Organizacja", "np. SP nr 5 w Łodzi"],
         topic: "Interesuje mnie",
+        timeframe: ["Preferowany termin", "np. Październik 2026, I kwartał 2027"],
         message: ["Wiadomość (opcjonalnie)", "Powiedz nam coś więcej…"],
         website: "Strona www",
       },
@@ -306,6 +307,7 @@ export const publicContent = {
         name: "Podaj imię i nazwisko",
         email: "Niepoprawny adres e-mail",
         org: "Podaj nazwę instytucji",
+        timeframe: "Podaj preferowany termin",
         spam: "spam",
       },
       toasts: {
@@ -527,6 +529,7 @@ export const publicContent = {
         email: ["E-mail", "anna@school.edu"],
         org: ["Institution / Organization", "e.g. Primary School No. 5"],
         topic: "I am interested in",
+        timeframe: ["Preferred timeframe", "e.g., October 2026, Q1 2027"],
         message: ["Message (optional)", "Tell us a bit more..."],
         website: "Website",
       },
@@ -546,6 +549,7 @@ export const publicContent = {
         name: "Enter your full name",
         email: "Enter a valid e-mail address",
         org: "Enter the institution name",
+        timeframe: "Enter preferred timeframe",
         spam: "spam",
       },
       toasts: {

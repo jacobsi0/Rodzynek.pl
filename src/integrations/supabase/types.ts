@@ -18,6 +18,7 @@ export type Database = {
           notes: string | null;
           organization: string;
           status: string;
+          timeframe: string | null;
           topic: string;
         };
         Insert: {
@@ -29,6 +30,7 @@ export type Database = {
           notes?: string | null;
           organization: string;
           status?: string;
+          timeframe?: string | null;
           topic: string;
         };
         Update: {
@@ -40,6 +42,7 @@ export type Database = {
           notes?: string | null;
           organization?: string;
           status?: string;
+          timeframe?: string | null;
           topic?: string;
         };
         Relationships: [];

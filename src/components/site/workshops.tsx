@@ -1,10 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, Puzzle, Smartphone } from "lucide-react";
 import { publicContent, type Locale } from "@/lib/public-content";
 import { SectionLabel, SectionTitle } from "./shell";
 
+const getAvailabilityTextPl = (remaining: number) => {
+  if (remaining === 0) {
+    return "Brak wolnych miejsc na warsztaty w nadchodzącym roku szkolnym (26-27).";
+  }
+  if (remaining === 1) {
+    return "Pozostało 1 miejsce na warsztaty w nadchodzącym roku szkolnym (26-27).";
+  }
+  if (remaining >= 2 && remaining <= 4) {
+    return `Pozostały ${remaining} miejsca na warsztaty w nadchodzącym roku szkolnym (26-27).`;
+  }
+  return `Pozostało ${remaining} miejsc na warsztaty w nadchodzącym roku szkolnym (26-27).`;
+};
+
+const getAvailabilityTextEn = (remaining: number) => {
+  if (remaining === 0) {
+    return "No spots left for workshops in the upcoming school year (26-27).";
+  }
+  if (remaining === 1) {
+    return "Only 1 spot left for workshops in the upcoming school year (26-27).";
+  }
+  return `Only ${remaining} spots left for workshops in the upcoming school year (26-27).`;
+};
+
 export function Workshops({ locale = "pl" }: { locale?: Locale }) {
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
+  const [bookedCount, setBookedCount] = useState<number | null>(null);
+  
   const t = publicContent[locale].workshops;
   const icons = [<Puzzle className="h-6 w-6" />, <Smartphone className="h-6 w-6" />];
   const accents = ["bg-clay", "bg-clay"] as const;
@@ -12,6 +37,21 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
   const toggleExpanded = (index: number) => {
     setExpanded((current) => ({ ...current, [index]: !current[index] }));
   };
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/availability")
+      .then((res) => res.json())
+      .then((data) => {
+        if (active && typeof data.bookedCount === "number") {
+          setBookedCount(data.bookedCount);
+        }
+      })
+      .catch((err) => console.error("Failed to load availability", err));
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <section className="bg-warm pt-32 pb-24 md:pt-40 md:pb-32">
@@ -30,9 +70,53 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
             {t.intro.after}
           </p>
           <p className="mt-5 text-xl font-semibold leading-relaxed text-clay">
-            {t.availabilityNotice}
+            {bookedCount !== null
+              ? (locale === "pl"
+                  ? getAvailabilityTextPl(Math.max(0, 4 - bookedCount))
+                  : getAvailabilityTextEn(Math.max(0, 4 - bookedCount)))
+              : t.availabilityNotice}
           </p>
-          <p className="mt-2 text-lg font-medium leading-relaxed text-muted-foreground">
+
+          {/* Wizualny tracker slotów */}
+          <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
+            {Array.from({ length: 4 }).map((_, idx) => {
+              const isBooked = bookedCount !== null ? idx < bookedCount : idx < 1;
+              return (
+                <div
+                  key={idx}
+                  className={`flex h-14 w-full max-w-[210px] items-center justify-between rounded-2xl border px-4 py-3 shadow-soft transition-all duration-300 md:h-16 ${
+                    isBooked
+                      ? "border-clay/20 bg-clay-soft/40 text-clay"
+                      : "border-dashed border-border bg-card text-muted-foreground hover:border-clay/30"
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div
+                      className={`flex h-6.5 w-6.5 items-center justify-center rounded-full text-xs font-bold transition-colors ${
+                        isBooked
+                          ? "bg-clay text-primary-foreground"
+                          : "bg-sand text-ink-soft dark:bg-sand/20"
+                      }`}
+                    >
+                      {idx + 1}
+                    </div>
+                    <span className="text-xs font-bold uppercase tracking-wider">
+                      {isBooked
+                        ? (locale === "pl" ? "Zajęte" : "Booked")
+                        : (locale === "pl" ? "Wolne" : "Available")}
+                    </span>
+                  </div>
+                  {isBooked ? (
+                    <div className="h-2 w-2 rounded-full bg-clay animate-pulse" />
+                  ) : (
+                    <div className="h-2 w-2 rounded-full bg-border" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          <p className="mt-8 text-lg font-medium leading-relaxed text-muted-foreground">
             {t.capacityNotice}
           </p>
         </div>

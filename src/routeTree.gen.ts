@@ -24,6 +24,7 @@ import { Route as EnProjectRouteImport } from './routes/en.project'
 import { Route as EnContactRouteImport } from './routes/en.contact'
 import { Route as EnAboutRouteImport } from './routes/en.about'
 import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as ApiAvailabilityRouteImport } from './routes/api/availability'
 import { Route as ApiAdminSubmissionsRouteImport } from './routes/api/admin/submissions'
 import { Route as ApiAdminSessionRouteImport } from './routes/api/admin/session'
 import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
@@ -104,6 +105,11 @@ const ApiContactRoute = ApiContactRouteImport.update({
   path: '/api/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAvailabilityRoute = ApiAvailabilityRouteImport.update({
+  id: '/api/availability',
+  path: '/api/availability',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminSubmissionsRoute = ApiAdminSubmissionsRouteImport.update({
   id: '/api/admin/submissions',
   path: '/api/admin/submissions',
@@ -135,6 +141,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/warsztaty': typeof WarsztatyRoute
   '/zespol': typeof ZespolRoute
+  '/api/availability': typeof ApiAvailabilityRoute
   '/api/contact': typeof ApiContactRoute
   '/en/about': typeof EnAboutRoute
   '/en/contact': typeof EnContactRoute
@@ -156,6 +163,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/warsztaty': typeof WarsztatyRoute
   '/zespol': typeof ZespolRoute
+  '/api/availability': typeof ApiAvailabilityRoute
   '/api/contact': typeof ApiContactRoute
   '/en/about': typeof EnAboutRoute
   '/en/contact': typeof EnContactRoute
@@ -178,6 +186,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/warsztaty': typeof WarsztatyRoute
   '/zespol': typeof ZespolRoute
+  '/api/availability': typeof ApiAvailabilityRoute
   '/api/contact': typeof ApiContactRoute
   '/en/about': typeof EnAboutRoute
   '/en/contact': typeof EnContactRoute
@@ -201,6 +210,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/warsztaty'
     | '/zespol'
+    | '/api/availability'
     | '/api/contact'
     | '/en/about'
     | '/en/contact'
@@ -222,6 +232,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/warsztaty'
     | '/zespol'
+    | '/api/availability'
     | '/api/contact'
     | '/en/about'
     | '/en/contact'
@@ -243,6 +254,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/warsztaty'
     | '/zespol'
+    | '/api/availability'
     | '/api/contact'
     | '/en/about'
     | '/en/contact'
@@ -265,6 +277,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   WarsztatyRoute: typeof WarsztatyRoute
   ZespolRoute: typeof ZespolRoute
+  ApiAvailabilityRoute: typeof ApiAvailabilityRoute
   ApiContactRoute: typeof ApiContactRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
   ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
@@ -379,6 +392,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/availability': {
+      id: '/api/availability'
+      path: '/api/availability'
+      fullPath: '/api/availability'
+      preLoaderRoute: typeof ApiAvailabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/admin/submissions': {
       id: '/api/admin/submissions'
       path: '/api/admin/submissions'
@@ -438,6 +458,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   WarsztatyRoute: WarsztatyRoute,
   ZespolRoute: ZespolRoute,
+  ApiAvailabilityRoute: ApiAvailabilityRoute,
   ApiContactRoute: ApiContactRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
   ApiAdminLogoutRoute: ApiAdminLogoutRoute,

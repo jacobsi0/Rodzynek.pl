@@ -21,7 +21,7 @@ export const Route = createFileRoute("/api/admin/submissions")({
           const supabase = createSupabaseAdminClient();
           const { data, error } = await supabase
             .from("contact_submissions")
-            .select("id, created_at, name, email, organization, topic, message, status, notes")
+            .select("id, created_at, name, email, organization, topic, timeframe, message, status, notes")
             .order("created_at", { ascending: false })
             .limit(200);
 

@@ -23,6 +23,7 @@ type Submission = {
   email: string;
   organization: string;
   topic: string;
+  timeframe: string | null;
   message: string | null;
   status: string;
   notes: string | null;
@@ -199,6 +200,7 @@ function exportToCSV(data: Submission[]) {
     "E-mail",
     "Organizacja",
     "Temat",
+    "Preferowany termin",
     "Wiadomość",
     "Status",
     "Notatki",
@@ -209,6 +211,7 @@ function exportToCSV(data: Submission[]) {
     s.email,
     s.organization,
     s.topic,
+    s.timeframe ?? "",
     s.message ?? "",
     s.status,
     s.notes ?? "",
@@ -251,6 +254,7 @@ function AdminPage() {
         submission.email,
         submission.organization,
         submission.topic,
+        submission.timeframe ?? "",
         submission.message ?? "",
         submission.status,
         submission.notes ?? "",
@@ -495,11 +499,12 @@ function AdminPage() {
             <table className="w-full min-w-[980px] border-collapse text-left text-sm">
               <thead className="bg-clay-soft/50 text-xs uppercase tracking-wide text-ink-soft">
                 <tr>
-                  <th className="px-4 py-3 font-semibold w-[12%]">Data</th>
-                  <th className="px-4 py-3 font-semibold w-[18%]">Osoba</th>
+                  <th className="px-4 py-3 font-semibold w-[10%]">Data</th>
+                  <th className="px-4 py-3 font-semibold w-[15%]">Osoba</th>
                   <th className="px-4 py-3 font-semibold w-[15%]">Organizacja</th>
-                  <th className="px-4 py-3 font-semibold w-[15%]">Temat</th>
-                  <th className="px-4 py-3 font-semibold w-[20%]">Wiadomość</th>
+                  <th className="px-4 py-3 font-semibold w-[12%]">Temat</th>
+                  <th className="px-4 py-3 font-semibold w-[10%]">Termin</th>
+                  <th className="px-4 py-3 font-semibold w-[18%]">Wiadomość</th>
                   <th className="px-4 py-3 font-semibold w-[10%]">Status</th>
                   <th className="px-4 py-3 font-semibold w-[10%]">Notatki</th>
                 </tr>
@@ -521,6 +526,7 @@ function AdminPage() {
                     </td>
                     <td className="px-4 py-3">{submission.organization}</td>
                     <td className="px-4 py-3">{submission.topic}</td>
+                    <td className="px-4 py-3 font-medium text-clay">{submission.timeframe || "-"}</td>
                     <td className="max-w-md px-4 py-3 text-muted-foreground">
                       {submission.message || "-"}
                     </td>

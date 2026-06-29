@@ -12,6 +12,7 @@ function getContactSchema(locale: Locale) {
     email: z.string().trim().email(validation.email).max(320),
     org: z.string().trim().min(2, validation.org).max(200),
     topic: z.string().trim().min(1).max(200),
+    timeframe: z.string().trim().min(1, validation.timeframe).max(200),
     message: z.string().trim().max(4000).optional().or(z.literal("")),
     website: z.string().max(0, validation.spam).optional().or(z.literal("")),
   });
@@ -77,6 +78,7 @@ export function Contact({ locale = "pl" }: { locale?: Locale }) {
       email: String(fd.get("email") ?? ""),
       org: String(fd.get("org") ?? ""),
       topic: String(fd.get("topic") ?? ""),
+      timeframe: String(fd.get("timeframe") ?? ""),
       message: String(fd.get("message") ?? ""),
       website: String(fd.get("website") ?? ""),
     };
@@ -110,6 +112,7 @@ export function Contact({ locale = "pl" }: { locale?: Locale }) {
           email: parsed.data.email,
           organization: parsed.data.org,
           topic: parsed.data.topic,
+          timeframe: parsed.data.timeframe,
           message: parsed.data.message?.trim() ? parsed.data.message : null,
           website: parsed.data.website,
         }),
@@ -245,6 +248,13 @@ export function Contact({ locale = "pl" }: { locale?: Locale }) {
                 ))}
               </select>
             </div>
+            <Field
+              label={t.fields.timeframe[0]}
+              name="timeframe"
+              placeholder={t.fields.timeframe[1]}
+              required
+              error={errors.timeframe}
+            />
             <div>
               <label
                 htmlFor="message"
