@@ -11,6 +11,7 @@ import {
   Plus,
   X,
   Check,
+  Trash2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -289,6 +290,30 @@ function AdminPage() {
     }
   };
 
+  const deleteSubmission = async (submission: Submission) => {
+    const confirmed = window.confirm(
+      `Usunąć zgłoszenie od ${submission.name} (${submission.organization})? Tej operacji nie można cofnąć.`,
+    );
+    if (!confirmed) return;
+
+    try {
+      const response = await fetch("/api/admin/submissions", {
+        method: "DELETE",
+        credentials: "same-origin",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ id: submission.id }),
+      });
+
+      if (!response.ok) throw new Error(`Usuwanie nie powiodło się: ${response.status}`);
+
+      setSubmissions((prev) => prev.filter((sub) => sub.id !== submission.id));
+      toast.success("Zgłoszenie zostało usunięte");
+    } catch (error) {
+      console.error(error);
+      toast.error("Nie udało się usunąć zgłoszenia");
+    }
+  };
+
   const loadSubmissions = async () => {
     setLoading(true);
     try {
@@ -515,6 +540,7 @@ function AdminPage() {
                   <th className="px-4 py-3 font-semibold w-[18%]">Wiadomość</th>
                   <th className="px-4 py-3 font-semibold w-[10%]">Status</th>
                   <th className="px-4 py-3 font-semibold w-[10%]">Notatki</th>
+                  <th className="px-4 py-3 font-semibold w-[5%]">Akcje</th>
                 </tr>
               </thead>
               <tbody>
@@ -555,18 +581,31 @@ function AdminPage() {
                         onSave={(id, nextNotes) => updateSubmission(id, { notes: nextNotes })}
                       />
                     </td>
+                    <td className="px-4 py-3">
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="icon"
+                        aria-label={`Usuń zgłoszenie od ${submission.name}`}
+                        title="Usuń zgłoszenie"
+                        onClick={() => deleteSubmission(submission)}
+                        className="h-9 w-9 border-destructive/25 bg-card text-destructive hover:border-destructive hover:bg-destructive/10"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </td>
                   </tr>
                 ))}
                 {loading && (
                   <tr>
-                    <td className="px-4 py-10 text-center text-muted-foreground" colSpan={7}>
+                    <td className="px-4 py-10 text-center text-muted-foreground" colSpan={9}>
                       Ładowanie zgłoszeń...
                     </td>
                   </tr>
                 )}
                 {!loading && filteredSubmissions.length === 0 && (
                   <tr>
-                    <td className="px-4 py-10 text-center text-muted-foreground" colSpan={7}>
+                    <td className="px-4 py-10 text-center text-muted-foreground" colSpan={9}>
                       Brak zgłoszeń do wyświetlenia.
                     </td>
                   </tr>

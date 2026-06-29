@@ -21,7 +21,9 @@ export const Route = createFileRoute("/api/admin/submissions")({
           const supabase = createSupabaseAdminClient();
           const { data, error } = await supabase
             .from("contact_submissions")
-            .select("id, created_at, name, email, organization, topic, timeframe, message, status, notes")
+            .select(
+              "id, created_at, name, email, organization, topic, timeframe, message, status, notes",
+            )
             .order("created_at", { ascending: false })
             .limit(200);
 
@@ -71,6 +73,32 @@ export const Route = createFileRoute("/api/admin/submissions")({
           return json({ ok: true });
         } catch (error) {
           console.error("błąd serwera podczas aktualizacji w panelu administracyjnym", error);
+          return json({ error: "server_error" }, 500);
+        }
+      },
+      DELETE: async ({ request }) => {
+        if (!(await isAdminRequest(request))) {
+          return json({ error: "unauthorized" }, 401);
+        }
+
+        try {
+          const body = (await request.json()) as { id?: string };
+
+          if (!body.id) {
+            return json({ error: "missing_id" }, 400);
+          }
+
+          const supabase = createSupabaseAdminClient();
+          const { error } = await supabase.from("contact_submissions").delete().eq("id", body.id);
+
+          if (error) {
+            console.error("błąd usuwania zgłoszenia w panelu administracyjnym", error);
+            return json({ error: "delete_failed" }, 500);
+          }
+
+          return json({ ok: true });
+        } catch (error) {
+          console.error("błąd serwera podczas usuwania w panelu administracyjnym", error);
           return json({ error: "server_error" }, 500);
         }
       },
