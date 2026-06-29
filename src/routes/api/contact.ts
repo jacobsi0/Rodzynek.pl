@@ -123,7 +123,7 @@ export const Route = createFileRoute("/api/contact")({
                 </div>
                 
                 <div style="text-align: center; margin-top: 30px;">
-                  <a href="https://rodzynek.pl/admin" style="background-color: #8c736c; color: white; padding: 12px 24px; text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block;">Przejdź do panelu admina</a>
+                  <a href="https://rodzynek.com.pl/admin" style="background-color: #8c736c; color: white; padding: 12px 24px; text-decoration: none; border-radius: 30px; font-weight: bold; display: inline-block;">Przejdź do panelu admina</a>
                 </div>
               </div>
             `;
