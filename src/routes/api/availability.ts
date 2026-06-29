@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { createSupabaseAdminClient } from "@/lib/supabase-admin.server";
 
+const RESERVED_WORKSHOP_SLOTS = 1;
+
 function json(payload: Record<string, unknown>, status = 200) {
   return Response.json(payload, {
     status,
@@ -17,7 +19,7 @@ export const Route = createFileRoute("/api/availability")({
       GET: async () => {
         try {
           const supabase = createSupabaseAdminClient();
-          
+
           // Liczymy zgłoszenia ze statusem 'scheduled' (umówione) oraz 'completed' (zrealizowane)
           const { count, error } = await supabase
             .from("contact_submissions")
@@ -29,7 +31,9 @@ export const Route = createFileRoute("/api/availability")({
             return json({ error: "query_failed" }, 500);
           }
 
-          return json({ bookedCount: count ?? 0 });
+          return json({
+            bookedCount: Math.max(count ?? 0, RESERVED_WORKSHOP_SLOTS),
+          });
         } catch (error) {
           console.error("Błąd serwera podczas sprawdzania dostępności:", error);
           return json({ error: "server_error" }, 500);
