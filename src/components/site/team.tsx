@@ -29,7 +29,7 @@ export function Team({ locale = "pl" }: { locale?: Locale }) {
           {t.intro && <p className="mt-4 text-muted-foreground">{t.intro}</p>}
         </div>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 md:grid-cols-4">
-          {t.members.map(([name, initials, quote], i) => {
+          {t.members.map(([name, initials], i) => {
             const image = memberImages[name];
             return (
               <article
@@ -56,9 +56,6 @@ export function Team({ locale = "pl" }: { locale?: Locale }) {
                 </div>
                 <div className="p-5">
                   <h3 className="font-display text-lg font-bold">{name}</h3>
-                  <p className="mt-3 text-sm italic leading-relaxed text-muted-foreground">
-                    „{quote}”
-                  </p>
                 </div>
               </article>
             );

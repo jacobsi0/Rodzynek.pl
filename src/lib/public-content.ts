@@ -259,14 +259,10 @@ export const publicContent = {
       contactLead: "Chcesz działać razem?",
       contactLink: "Napisz do nas →",
       members: [
-        ["Kornelia Łabieniec", "KŁ", "Trudne rzeczy łatwiej przejść z uśmiechem. Serio."],
-        ["Iwo Nalbach", "IN", "Byłem obok. Widziałem. I zostałem."],
-        [
-          "Zuzanna Malinowska",
-          "ZM",
-          "Wiedziałam, że nie jestem sama. Chcę, żebyś też to wiedział.",
-        ],
-        ["Lena Drogosz", "LD", "Z małej iskry można zrobić pożar."],
+        ["Kornelia Łabieniec", "KŁ"],
+        ["Iwo Nalbach", "IN"],
+        ["Zuzanna Malinowska", "ZM"],
+        ["Lena Drogosz", "LD"],
       ],
     },
     contact: {
@@ -505,10 +501,10 @@ export const publicContent = {
       contactLead: "Want to work together?",
       contactLink: "Contact us →",
       members: [
-        ["Kornelia Łabieniec", "KŁ", "Hard things are easier to get through with a smile. Really."],
-        ["Iwo Nalbach", "IN", "I was nearby. I saw it. And I stayed."],
-        ["Zuzanna Malinowska", "ZM", "I knew I was not alone. I want you to know that too."],
-        ["Lena Drogosz", "LD", "A small spark can start a fire."],
+        ["Kornelia Łabieniec", "KŁ"],
+        ["Iwo Nalbach", "IN"],
+        ["Zuzanna Malinowska", "ZM"],
+        ["Lena Drogosz", "LD"],
       ],
     },
     contact: {
