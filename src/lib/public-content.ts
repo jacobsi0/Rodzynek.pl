@@ -315,6 +315,95 @@ export const publicContent = {
         successDescription: "Odezwiemy się w ciągu ~24 godzin.",
       },
     },
+    helplines: {
+      badge: "Wsparcie kryzysowe",
+      titleBefore: "Potrzebujesz pomocy ",
+      titleEmphasis: "tu i teraz?",
+      subtitle:
+        "Jeśli mierzysz się z kryzysem, czujesz przytłoczenie lub po prostu potrzebujesz z kimś porozmawiać – nie zostawaj z tym sam. Pomoc jest bezpłatna, dyskretna i dostępna dla każdego.",
+      callAction: "Zadzwoń teraz",
+      features: {
+        free: "Bezpłatnie",
+        anonymous: "Anonimowo",
+        available247: "Dostępne 24/7",
+      },
+      items: [
+        {
+          number: "116 111",
+          rawNumber: "116111",
+          name: "Telefon Zaufania dla Dzieci i Młodzieży",
+          operator: "Fundacja Dajemy Dzieciom Siłę",
+          description:
+            "Całodobowa, bezpłatna i anonimowa linia pomocy psychologicznej i wsparcia w każdej trudnej sytuacji.",
+          badge: "Dzieci i Młodzież",
+          hours: "Całodobowo 24/7",
+        },
+        {
+          number: "800 12 12 12",
+          rawNumber: "800121212",
+          name: "Dziecięcy Telefon Zaufania RPD",
+          operator: "Rzecznik Praw Dziecka",
+          description:
+            "Bezpłatny telefon wsparcia psychologicznego i prawnego dla młodych ludzi oraz ich opiekunów.",
+          badge: "Dzieci i Opiekunowie",
+          hours: "Całodobowo 24/7",
+        },
+        {
+          number: "22 484 88 01",
+          rawNumber: "224848801",
+          name: "Antydepresyjny Telefon Zaufania",
+          operator: "Fundacja ITAKA",
+          description:
+            "Pomoc psychologiczna dla osób zmagających się z depresją, obniżonym nastrojem i lękiem.",
+          badge: "Wsparcie psychologiczne",
+          hours: "pn.–pt. 15:00–20:00",
+        },
+      ],
+    },
+    instagram: {
+      label: "Social Media",
+      titleBefore: "Bądź z nami na ",
+      titleEmphasis: "Instagramie",
+      subtitle:
+        "Dzielimy się wiedzą o presji rówieśniczej, asertywności i kulisami warsztatów. Zobacz, jak działamy!",
+      handle: "@rodzynekedu",
+      url: "https://www.instagram.com/rodzynekedu/",
+      followButton: "Obserwuj @rodzynekedu",
+      posts: [
+        {
+          tag: "Wiedza & Asertywność",
+          title: "3 sposoby na asertywne „NIE” bez poczucia winy",
+          excerpt:
+            "Jak stawiać granice w grupie znajomych i nie bać się odrzucenia? Kilka prostych zdań, które ratują sytuację.",
+          likes: "128",
+          type: "Karuzela",
+        },
+        {
+          tag: "Profilaktyka",
+          title: "FOMO i presja bycia online – jak nie zwariować?",
+          excerpt:
+            "Ciągłe sprawdzanie powiadomień i lęk, że coś nas omija. Skąd to się bierze i jak zadbać o cyfrowy reset?",
+          likes: "194",
+          type: "Post",
+        },
+        {
+          tag: "Kulisy warsztatów",
+          title: "Masz głos! Relacja z zajęć w szkole w Łodzi",
+          excerpt:
+            "Młodzież miała mnóstwo genialnych pomysłów na integrację klasową. Dziękujemy za szczere rozmowy!",
+          likes: "246",
+          type: "Rolka",
+        },
+        {
+          tag: "O nas",
+          title: "Dlaczego Rodzynek? O metaforze bycia innym",
+          excerpt:
+            "Każdy z nas bywa rodzynkiem – wykluczonym z ciasta. Budujemy przestrzeń, w której każdy czuje się ważny.",
+          likes: "312",
+          type: "Post",
+        },
+      ],
+    },
     ui: {
       notFoundTitle: "Nie znaleziono strony",
       notFoundBody: "Strona, której szukasz, nie istnieje albo została przeniesiona.",
@@ -556,6 +645,95 @@ export const publicContent = {
         successTitle: "Sent!",
         successDescription: "We will reply within ~24 hours.",
       },
+    },
+    helplines: {
+      badge: "Crisis Support",
+      titleBefore: "Need support ",
+      titleEmphasis: "right now?",
+      subtitle:
+        "If you are facing a crisis, feel overwhelmed, or simply need someone to talk to – you don't have to face it alone. Help is free, confidential, and always available.",
+      callAction: "Call now",
+      features: {
+        free: "Free of charge",
+        anonymous: "Confidential",
+        available247: "Available 24/7",
+      },
+      items: [
+        {
+          number: "116 111",
+          rawNumber: "116111",
+          name: "Helpline for Children and Youth",
+          operator: "Empowering Children Foundation",
+          description:
+            "24/7, free and confidential psychological support for young people facing any difficult situation.",
+          badge: "Youth Support",
+          hours: "24/7 Support",
+        },
+        {
+          number: "800 12 12 12",
+          rawNumber: "800121212",
+          name: "Children's Ombudsman Helpline",
+          operator: "Ombudsman for Children",
+          description:
+            "Free psychological and support line for children, young people and caregivers across Poland.",
+          badge: "Children & Caregivers",
+          hours: "24/7 Support",
+        },
+        {
+          number: "22 484 88 01",
+          rawNumber: "224848801",
+          name: "Anti-depression Helpline",
+          operator: "ITAKA Foundation",
+          description:
+            "Psychological support for individuals coping with depression, anxiety and mental overload.",
+          badge: "Mental wellbeing",
+          hours: "Mon–Fri 3:00 PM–8:00 PM",
+        },
+      ],
+    },
+    instagram: {
+      label: "Social Media",
+      titleBefore: "Join us on ",
+      titleEmphasis: "Instagram",
+      subtitle:
+        "We share insights on peer pressure, assertiveness and behind-the-scenes from our workshops. Check it out!",
+      handle: "@rodzynekedu",
+      url: "https://www.instagram.com/rodzynekedu/",
+      followButton: "Follow @rodzynekedu",
+      posts: [
+        {
+          tag: "Tips & Assertiveness",
+          title: "3 ways to say an assertive 'NO' without guilt",
+          excerpt:
+            "How to set boundaries with peers without fear of rejection? Practical phrases for everyday situations.",
+          likes: "128",
+          type: "Carousel",
+        },
+        {
+          tag: "Prevention",
+          title: "FOMO & online pressure – keeping your balance",
+          excerpt:
+            "Constantly checking notifications and fear of missing out. How to give yourself a digital reset?",
+          likes: "194",
+          type: "Post",
+        },
+        {
+          tag: "Behind the scenes",
+          title: "You have a voice! Workshop recap from Lodz",
+          excerpt:
+            "Students shared inspiring ideas for class reintegration. Thank you for honest and deep conversations!",
+          likes: "246",
+          type: "Reel",
+        },
+        {
+          tag: "About us",
+          title: "Why Rodzynek? The raisin metaphor explained",
+          excerpt:
+            "We all feel left out sometimes. We create a space where everyone feels recognized and respected.",
+          likes: "312",
+          type: "Post",
+        },
+      ],
     },
     ui: {
       notFoundTitle: "Page not found",

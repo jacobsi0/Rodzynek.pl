@@ -29,7 +29,7 @@ const getAvailabilityTextEn = (remaining: number) => {
 export function Workshops({ locale = "pl" }: { locale?: Locale }) {
   const [expanded, setExpanded] = useState<Record<number, boolean>>({});
   const [bookedCount, setBookedCount] = useState<number | null>(null);
-  
+
   const t = publicContent[locale].workshops;
   const icons = [<Puzzle className="h-6 w-6" />, <Smartphone className="h-6 w-6" />];
   const accents = ["bg-clay", "bg-clay"] as const;
@@ -71,9 +71,9 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
           </p>
           <p className="mt-5 text-xl font-semibold leading-relaxed text-clay">
             {bookedCount !== null
-              ? (locale === "pl"
-                  ? getAvailabilityTextPl(Math.max(0, 4 - bookedCount))
-                  : getAvailabilityTextEn(Math.max(0, 4 - bookedCount)))
+              ? locale === "pl"
+                ? getAvailabilityTextPl(Math.max(0, 4 - bookedCount))
+                : getAvailabilityTextEn(Math.max(0, 4 - bookedCount))
               : t.availabilityNotice}
           </p>
 
@@ -102,8 +102,12 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
                     </div>
                     <span className="text-xs font-bold uppercase tracking-wider">
                       {isBooked
-                        ? (locale === "pl" ? "Zajęte" : "Booked")
-                        : (locale === "pl" ? "Wolne" : "Available")}
+                        ? locale === "pl"
+                          ? "Zajęte"
+                          : "Booked"
+                        : locale === "pl"
+                          ? "Wolne"
+                          : "Available"}
                     </span>
                   </div>
                   {isBooked ? (

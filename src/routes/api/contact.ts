@@ -82,7 +82,7 @@ export const Route = createFileRoute("/api/contact")({
           // Wysyłanie e-maili powiadomień po pomyślnym zapisie w bazie
           try {
             const adminEmail = process.env.EMAIL_TO_ADMIN || "rodzynekpl.kontakt@gmail.com";
-            
+
             // 1. E-mail powiadomienia dla administratora
             const adminHtml = `
               <div style="font-family: sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background-color: #fcfbfa; color: #372a25;">
@@ -127,7 +127,7 @@ export const Route = createFileRoute("/api/contact")({
                 </div>
               </div>
             `;
-            
+
             await sendEmail({
               to: adminEmail,
               subject: `🍇 Nowe zgłoszenie: ${parsed.data.organization} - ${parsed.data.topic}`,
@@ -137,12 +137,13 @@ export const Route = createFileRoute("/api/contact")({
             // 2. E-mail potwierdzenia dla użytkownika (szkoły)
             // Dobieramy język na podstawie wybranej opcji tematu
             const isEnglish = parsed.data.topic.toLowerCase().includes("workshop for");
-            
-            const userSubject = isEnglish 
-              ? "🍇 Thank you for inviting Rodzynek.pl!" 
+
+            const userSubject = isEnglish
+              ? "🍇 Thank you for inviting Rodzynek.pl!"
               : "🍇 Dziękujemy za zgłoszenie - Rodzynek.pl";
-              
-            const userHtml = isEnglish ? `
+
+            const userHtml = isEnglish
+              ? `
               <div style="font-family: sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background-color: #fcfbfa; color: #372a25;">
                 <div style="text-align: center; border-bottom: 2px solid #8c736c; padding-bottom: 15px; margin-bottom: 20px;">
                   <h1 style="color: #463b37; margin: 0; font-size: 24px;">🍇 Thank you for inviting us!</h1>
@@ -166,7 +167,8 @@ export const Route = createFileRoute("/api/contact")({
                   Instagram: <a href="https://instagram.com/rodzynekedu" style="color: #8c736c;">@rodzynekedu</a>
                 </div>
               </div>
-            ` : `
+            `
+              : `
               <div style="font-family: sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 12px; background-color: #fcfbfa; color: #372a25;">
                 <div style="text-align: center; border-bottom: 2px solid #8c736c; padding-bottom: 15px; margin-bottom: 20px;">
                   <h1 style="color: #463b37; margin: 0; font-size: 24px;">🍇 Dziękujemy za zgłoszenie!</h1>

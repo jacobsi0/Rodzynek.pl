@@ -4,6 +4,7 @@ import { About } from "@/components/site/about";
 import { Workshops } from "@/components/site/workshops";
 import { Projekt } from "@/components/site/projekt";
 import { Team } from "@/components/site/team";
+import { InstagramFeed } from "@/components/site/instagram-feed";
 import { Contact } from "@/components/site/contact";
 import { publicSectionIds, type Locale, type PublicRouteKey } from "@/lib/public-content";
 
@@ -26,6 +27,7 @@ export function PublicHomePage({ locale }: { locale: Locale }) {
       <div id={sections.team}>
         <Team locale={locale} />
       </div>
+      <InstagramFeed locale={locale} />
       <div id={sections.contact}>
         <Contact locale={locale} />
       </div>

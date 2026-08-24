@@ -8,6 +8,7 @@ import {
   type Locale,
   type PublicRouteKey,
 } from "@/lib/public-content";
+import { Helplines } from "@/components/site/helplines";
 
 function useReveal() {
   useEffect(() => {
@@ -234,6 +235,7 @@ export function SiteShell({
       </a>
       <Nav scrolled={scrolled} locale={locale} page={page} />
       <main id="main">{children}</main>
+      <Helplines locale={locale} />
       <Footer locale={locale} />
     </div>
   );
