@@ -180,7 +180,7 @@ export const Route = createFileRoute("/api/contact")({
                 
                 <p>Zarejestrowaliśmy Twoje zgłoszenie na temat: <strong>${parsed.data.topic}</strong> (preferowany termin: <strong>${parsed.data.timeframe}</strong>).</p>
                 
-                <p>Jako inicjatywa studencka dbamy o najwyższą jakość prowadzonych działań. Skontaktujemy się z Tobą na ten adres e-mail w ciągu ok. <strong>24 godzin</strong>, aby omówić szczegóły i potwierdzić termin warsztatów.</p>
+                <p>Jako inicjatywa studencka dbamy o najwyższą jakość prowadzonych działań. Skontaktujemy się z Tobą na ten adres e-mail do <strong>5 dni roboczych</strong>, aby omówić szczegóły i potwierdzić termin warsztatów.</p>
                 
                 <hr style="border: none; border-top: 1px solid #efecea; margin: 25px 0;" />
                 
