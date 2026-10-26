@@ -9,60 +9,30 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ZespolRouteImport } from './routes/zespol'
-import { Route as WarsztatyRouteImport } from './routes/warsztaty'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ProjektRouteImport } from './routes/projekt'
-import { Route as ONasRouteImport } from './routes/o-nas'
-import { Route as KontaktRouteImport } from './routes/kontakt'
-import { Route as EnRouteImport } from './routes/en'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as EnWorkshopsRouteImport } from './routes/en.workshops'
-import { Route as EnTeamRouteImport } from './routes/en.team'
-import { Route as EnProjectRouteImport } from './routes/en.project'
-import { Route as EnContactRouteImport } from './routes/en.contact'
-import { Route as EnAboutRouteImport } from './routes/en.about'
-import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as EnRouteImport } from './routes/en'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as ONasRouteImport } from './routes/o-nas'
+import { Route as ProjektRouteImport } from './routes/projekt'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as WarsztatyRouteImport } from './routes/warsztaty'
+import { Route as ZespolRouteImport } from './routes/zespol'
 import { Route as ApiAvailabilityRouteImport } from './routes/api/availability'
-import { Route as ApiAdminSubmissionsRouteImport } from './routes/api/admin/submissions'
-import { Route as ApiAdminSessionRouteImport } from './routes/api/admin/session'
-import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiContactRouteImport } from './routes/api/contact'
+import { Route as EnAboutRouteImport } from './routes/en.about'
+import { Route as EnContactRouteImport } from './routes/en.contact'
+import { Route as EnProjectRouteImport } from './routes/en.project'
+import { Route as EnTeamRouteImport } from './routes/en.team'
+import { Route as EnWorkshopsRouteImport } from './routes/en.workshops'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
+import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiAdminSessionRouteImport } from './routes/api/admin/session'
+import { Route as ApiAdminSubmissionsRouteImport } from './routes/api/admin/submissions'
 
-const ZespolRoute = ZespolRouteImport.update({
-  id: '/zespol',
-  path: '/zespol',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WarsztatyRoute = WarsztatyRouteImport.update({
-  id: '/warsztaty',
-  path: '/warsztaty',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProjektRoute = ProjektRouteImport.update({
-  id: '/projekt',
-  path: '/projekt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ONasRoute = ONasRouteImport.update({
-  id: '/o-nas',
-  path: '/o-nas',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KontaktRoute = KontaktRouteImport.update({
-  id: '/kontakt',
-  path: '/kontakt',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EnRoute = EnRouteImport.update({
-  id: '/en',
-  path: '/en',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -70,39 +40,39 @@ const AdminRoute = AdminRouteImport.update({
   path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const EnRoute = EnRouteImport.update({
+  id: '/en',
+  path: '/en',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EnWorkshopsRoute = EnWorkshopsRouteImport.update({
-  id: '/workshops',
-  path: '/workshops',
-  getParentRoute: () => EnRoute,
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const EnTeamRoute = EnTeamRouteImport.update({
-  id: '/team',
-  path: '/team',
-  getParentRoute: () => EnRoute,
+const ONasRoute = ONasRouteImport.update({
+  id: '/o-nas',
+  path: '/o-nas',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const EnProjectRoute = EnProjectRouteImport.update({
-  id: '/project',
-  path: '/project',
-  getParentRoute: () => EnRoute,
+const ProjektRoute = ProjektRouteImport.update({
+  id: '/projekt',
+  path: '/projekt',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const EnContactRoute = EnContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => EnRoute,
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const EnAboutRoute = EnAboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => EnRoute,
+const WarsztatyRoute = WarsztatyRouteImport.update({
+  id: '/warsztaty',
+  path: '/warsztaty',
+  getParentRoute: () => rootRouteImport,
 } as any)
-const ApiContactRoute = ApiContactRouteImport.update({
-  id: '/api/contact',
-  path: '/api/contact',
+const ZespolRoute = ZespolRouteImport.update({
+  id: '/zespol',
+  path: '/zespol',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAvailabilityRoute = ApiAvailabilityRouteImport.update({
@@ -110,14 +80,39 @@ const ApiAvailabilityRoute = ApiAvailabilityRouteImport.update({
   path: '/api/availability',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAdminSubmissionsRoute = ApiAdminSubmissionsRouteImport.update({
-  id: '/api/admin/submissions',
-  path: '/api/admin/submissions',
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAdminSessionRoute = ApiAdminSessionRouteImport.update({
-  id: '/api/admin/session',
-  path: '/api/admin/session',
+const EnAboutRoute = EnAboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnContactRoute = EnContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnProjectRoute = EnProjectRouteImport.update({
+  id: '/project',
+  path: '/project',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnTeamRoute = EnTeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => EnRoute,
+} as any)
+const EnWorkshopsRoute = EnWorkshopsRouteImport.update({
+  id: '/workshops',
+  path: '/workshops',
+  getParentRoute: () => EnRoute,
+} as any)
+const ApiAdminLoginRoute = ApiAdminLoginRouteImport.update({
+  id: '/api/admin/login',
+  path: '/api/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
@@ -125,9 +120,14 @@ const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
   path: '/api/admin/logout',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAdminLoginRoute = ApiAdminLoginRouteImport.update({
-  id: '/api/admin/login',
-  path: '/api/admin/login',
+const ApiAdminSessionRoute = ApiAdminSessionRouteImport.update({
+  id: '/api/admin/session',
+  path: '/api/admin/session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminSubmissionsRoute = ApiAdminSubmissionsRouteImport.update({
+  id: '/api/admin/submissions',
+  path: '/api/admin/submissions',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -287,53 +287,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/zespol': {
-      id: '/zespol'
-      path: '/zespol'
-      fullPath: '/zespol'
-      preLoaderRoute: typeof ZespolRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/warsztaty': {
-      id: '/warsztaty'
-      path: '/warsztaty'
-      fullPath: '/warsztaty'
-      preLoaderRoute: typeof WarsztatyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/projekt': {
-      id: '/projekt'
-      path: '/projekt'
-      fullPath: '/projekt'
-      preLoaderRoute: typeof ProjektRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/o-nas': {
-      id: '/o-nas'
-      path: '/o-nas'
-      fullPath: '/o-nas'
-      preLoaderRoute: typeof ONasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kontakt': {
-      id: '/kontakt'
-      path: '/kontakt'
-      fullPath: '/kontakt'
-      preLoaderRoute: typeof KontaktRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/en': {
-      id: '/en'
-      path: '/en'
-      fullPath: '/en'
-      preLoaderRoute: typeof EnRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -343,53 +301,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/en': {
+      id: '/en'
+      path: '/en'
+      fullPath: '/en'
+      preLoaderRoute: typeof EnRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/en/workshops': {
-      id: '/en/workshops'
-      path: '/workshops'
-      fullPath: '/en/workshops'
-      preLoaderRoute: typeof EnWorkshopsRouteImport
-      parentRoute: typeof EnRoute
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/en/team': {
-      id: '/en/team'
-      path: '/team'
-      fullPath: '/en/team'
-      preLoaderRoute: typeof EnTeamRouteImport
-      parentRoute: typeof EnRoute
+    '/o-nas': {
+      id: '/o-nas'
+      path: '/o-nas'
+      fullPath: '/o-nas'
+      preLoaderRoute: typeof ONasRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/en/project': {
-      id: '/en/project'
-      path: '/project'
-      fullPath: '/en/project'
-      preLoaderRoute: typeof EnProjectRouteImport
-      parentRoute: typeof EnRoute
+    '/projekt': {
+      id: '/projekt'
+      path: '/projekt'
+      fullPath: '/projekt'
+      preLoaderRoute: typeof ProjektRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/en/contact': {
-      id: '/en/contact'
-      path: '/contact'
-      fullPath: '/en/contact'
-      preLoaderRoute: typeof EnContactRouteImport
-      parentRoute: typeof EnRoute
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/en/about': {
-      id: '/en/about'
-      path: '/about'
-      fullPath: '/en/about'
-      preLoaderRoute: typeof EnAboutRouteImport
-      parentRoute: typeof EnRoute
+    '/warsztaty': {
+      id: '/warsztaty'
+      path: '/warsztaty'
+      fullPath: '/warsztaty'
+      preLoaderRoute: typeof WarsztatyRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/api/contact': {
-      id: '/api/contact'
-      path: '/api/contact'
-      fullPath: '/api/contact'
-      preLoaderRoute: typeof ApiContactRouteImport
+    '/zespol': {
+      id: '/zespol'
+      path: '/zespol'
+      fullPath: '/zespol'
+      preLoaderRoute: typeof ZespolRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/availability': {
@@ -399,18 +357,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAvailabilityRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/admin/submissions': {
-      id: '/api/admin/submissions'
-      path: '/api/admin/submissions'
-      fullPath: '/api/admin/submissions'
-      preLoaderRoute: typeof ApiAdminSubmissionsRouteImport
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/admin/session': {
-      id: '/api/admin/session'
-      path: '/api/admin/session'
-      fullPath: '/api/admin/session'
-      preLoaderRoute: typeof ApiAdminSessionRouteImport
+    '/en/about': {
+      id: '/en/about'
+      path: '/about'
+      fullPath: '/en/about'
+      preLoaderRoute: typeof EnAboutRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/contact': {
+      id: '/en/contact'
+      path: '/contact'
+      fullPath: '/en/contact'
+      preLoaderRoute: typeof EnContactRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/project': {
+      id: '/en/project'
+      path: '/project'
+      fullPath: '/en/project'
+      preLoaderRoute: typeof EnProjectRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/team': {
+      id: '/en/team'
+      path: '/team'
+      fullPath: '/en/team'
+      preLoaderRoute: typeof EnTeamRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/en/workshops': {
+      id: '/en/workshops'
+      path: '/workshops'
+      fullPath: '/en/workshops'
+      preLoaderRoute: typeof EnWorkshopsRouteImport
+      parentRoute: typeof EnRoute
+    }
+    '/api/admin/login': {
+      id: '/api/admin/login'
+      path: '/api/admin/login'
+      fullPath: '/api/admin/login'
+      preLoaderRoute: typeof ApiAdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/logout': {
@@ -420,11 +413,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminLogoutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/api/admin/login': {
-      id: '/api/admin/login'
-      path: '/api/admin/login'
-      fullPath: '/api/admin/login'
-      preLoaderRoute: typeof ApiAdminLoginRouteImport
+    '/api/admin/session': {
+      id: '/api/admin/session'
+      path: '/api/admin/session'
+      fullPath: '/api/admin/session'
+      preLoaderRoute: typeof ApiAdminSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/submissions': {
+      id: '/api/admin/submissions'
+      path: '/api/admin/submissions'
+      fullPath: '/api/admin/submissions'
+      preLoaderRoute: typeof ApiAdminSubmissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
