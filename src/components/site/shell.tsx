@@ -9,6 +9,7 @@ import {
   type PublicRouteKey,
 } from "@/lib/public-content";
 import { Helplines } from "@/components/site/helplines";
+import { QuickHelp } from "@/components/site/quick-help";
 
 function useReveal() {
   useEffect(() => {
@@ -95,7 +96,7 @@ function Nav({
         scrolled || open ? "backdrop-blur-xl bg-warm/85 border-b border-border" : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 md:px-10">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 md:px-10">
         <a
           href={getPublicPath(locale, "home")}
           aria-label={t.homeAria}
@@ -115,7 +116,8 @@ function Nav({
             </li>
           ))}
         </ul>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
+          <QuickHelp locale={locale} />
           <a
             href={alternateHref}
             aria-label={t.languageAria}

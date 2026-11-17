@@ -85,6 +85,12 @@ export function normalizePathname(pathname: string): string {
 export const publicContent = {
   pl: {
     site: {
+      quickHelp: {
+        label: "Potrzebujesz pomocy teraz?",
+        shortLabel: "Pomoc",
+        description: "Bezpłatne, całodobowe telefony zaufania dla dzieci i młodzieży w Polsce.",
+        closeLabel: "Zamknij",
+      },
       skipLink: "Przejdź do treści",
       homeAria: "Rodzynek.pl - strona główna",
       nav: {
@@ -455,6 +461,12 @@ export const publicContent = {
   },
   en: {
     site: {
+      quickHelp: {
+        label: "Need help now?",
+        shortLabel: "Help",
+        description: "Free 24/7 helplines for children and young people in Poland.",
+        closeLabel: "Close",
+      },
       skipLink: "Skip to content",
       homeAria: "Rodzynek.pl - home",
       nav: {
