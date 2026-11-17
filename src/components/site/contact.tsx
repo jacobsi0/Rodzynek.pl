@@ -151,7 +151,7 @@ export function Contact({ locale = "pl" }: { locale?: Locale }) {
   const sent = status === "sent";
 
   return (
-    <section className="relative overflow-hidden bg-clay pt-32 pb-24 text-warm md:pt-40 md:pb-32">
+    <section className="site-mesh-contact relative overflow-hidden pt-32 pb-24 text-warm md:pt-40 md:pb-32">
       <div
         aria-hidden
         className="pointer-events-none absolute -bottom-12 right-[-2rem] select-none font-display text-[14rem] font-black leading-none tracking-tighter text-warm/[0.06] md:text-[18rem]"

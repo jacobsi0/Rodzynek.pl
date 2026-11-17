@@ -58,7 +58,7 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
   }, []);
 
   return (
-    <section className="bg-warm pt-32 pb-24 md:pt-40 md:pb-32">
+    <section className="site-mesh-alt pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="reveal mx-auto max-w-2xl text-center">
           <SectionLabel center>{t.label}</SectionLabel>

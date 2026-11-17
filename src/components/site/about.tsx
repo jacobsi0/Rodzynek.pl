@@ -11,7 +11,7 @@ export function About({ locale = "pl" }: { locale?: Locale }) {
   ];
 
   return (
-    <section className="bg-background pt-32 pb-24 md:pt-40 md:pb-32">
+    <section className="site-mesh pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="mx-auto grid max-w-7xl items-start gap-16 px-6 md:grid-cols-[0.95fr_1.05fr] md:px-10">
         <div className="reveal relative">
           <div className="relative overflow-hidden rounded-3xl bg-ink p-9 text-warm shadow-elev dark:bg-[#16110f] dark:text-[#f4ead8]">

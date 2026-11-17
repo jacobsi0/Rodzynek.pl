@@ -1,5 +1,71 @@
+import { useEffect, useRef } from "react";
 import { Sparkles, ArrowRight, HeartHandshake, MessageCircle, Shield } from "lucide-react";
 import { getHomeSectionHref, publicContent, type Locale } from "@/lib/public-content";
+
+function HeroBackdrop() {
+  const blobRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const blob = blobRef.current;
+    const hero = blob?.parentElement;
+    if (!blob || !hero) return;
+
+    const device = navigator as Navigator & {
+      deviceMemory?: number;
+      connection?: { saveData?: boolean };
+    };
+    if (
+      device.hardwareConcurrency <= 4 ||
+      (device.deviceMemory ?? Infinity) <= 4 ||
+      device.connection?.saveData
+    ) {
+      return;
+    }
+
+    const motion = window.matchMedia(
+      "(min-width: 768px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)",
+    );
+    let lastUpdate = -Infinity;
+
+    const move = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse" || event.timeStamp - lastUpdate < 48) return;
+
+      lastUpdate = event.timeStamp;
+      const x = (event.clientX / window.innerWidth - 0.5) * 28;
+      const y = (event.clientY / window.innerHeight - 0.5) * 18;
+      blob.style.transform = `translate(${x}px, ${y}px)`;
+    };
+
+    const reset = () => {
+      lastUpdate = -Infinity;
+      blob.style.removeProperty("transform");
+    };
+
+    const disable = () => {
+      hero.removeEventListener("pointermove", move);
+      hero.removeEventListener("pointerleave", reset);
+      reset();
+    };
+
+    const sync = () => {
+      if (motion.matches) {
+        hero.addEventListener("pointermove", move, { passive: true });
+        hero.addEventListener("pointerleave", reset, { passive: true });
+      } else {
+        disable();
+      }
+    };
+
+    sync();
+    motion.addEventListener("change", sync);
+    return () => {
+      motion.removeEventListener("change", sync);
+      disable();
+    };
+  }, []);
+
+  return <div ref={blobRef} aria-hidden="true" className="hero-blob" />;
+}
 
 function FloatCard({
   icon,
@@ -52,16 +118,8 @@ export function Hero({ locale = "pl" }: { locale?: Locale }) {
   ];
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
-      <div aria-hidden className="absolute inset-0 bg-grain opacity-60" />
-      <div
-        aria-hidden
-        className="absolute -top-32 -right-32 h-[36rem] w-[36rem] rounded-full bg-clay-soft blur-3xl opacity-70"
-      />
-      <div
-        aria-hidden
-        className="absolute -bottom-40 -left-20 h-[28rem] w-[28rem] rounded-full bg-honey/20 blur-3xl"
-      />
+    <section className="site-mesh-hero relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
+      <HeroBackdrop />
 
       <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 md:grid-cols-[1.1fr_1fr] md:px-10">
         <div className="animate-fade-up">
@@ -115,7 +173,7 @@ export function Hero({ locale = "pl" }: { locale?: Locale }) {
 export function Marquee({ locale = "pl" }: { locale?: Locale }) {
   const items = publicContent[locale].hero.marquee;
   return (
-    <div className="marquee-track border-y border-border bg-warm py-5 overflow-hidden">
+    <div className="marquee-track site-mesh-alt overflow-hidden border-y border-border py-5">
       <div className="flex w-max animate-marquee gap-12 pr-12 text-sm font-semibold uppercase tracking-[0.15em] text-ink-soft/85">
         {[...items, ...items].map((text, i) => (
           <span key={`${text}-${i}`} className="flex items-center gap-12">

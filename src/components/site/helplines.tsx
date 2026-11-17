@@ -6,17 +6,7 @@ export function Helplines({ locale = "pl" }: { locale?: Locale }) {
   const t = publicContent[locale].helplines;
 
   return (
-    <section className="relative overflow-hidden bg-warm py-20 md:py-28">
-      {/* Subtelne tło dekoracyjne */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -left-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-clay-soft/40 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-20 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-honey/20 blur-3xl"
-      />
-
+    <section className="site-mesh-alt relative overflow-hidden py-20 md:py-28">
       <div className="relative mx-auto max-w-7xl px-6 md:px-10">
         <div className="reveal mx-auto max-w-2xl text-center">
           <SectionLabel center>{t.badge}</SectionLabel>

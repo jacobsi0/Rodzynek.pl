@@ -11,7 +11,7 @@ export function Projekt({ locale = "pl" }: { locale?: Locale }) {
   ];
 
   return (
-    <section className="bg-background pt-32 pb-24 md:pt-40 md:pb-32">
+    <section className="site-mesh pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="mx-auto grid max-w-7xl items-start gap-16 px-6 md:grid-cols-[1fr_1.15fr] md:px-10">
         <div className="reveal">
           <SectionLabel>{t.label}</SectionLabel>

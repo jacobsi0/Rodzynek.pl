@@ -149,7 +149,7 @@ export function InstagramFeed({ locale = "pl" }: { locale?: Locale }) {
   };
 
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-28">
+    <section className="site-mesh relative overflow-hidden py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="reveal mx-auto flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
           <div className="text-center md:text-left">

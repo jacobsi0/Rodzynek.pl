@@ -87,6 +87,9 @@
   --shadow-elev: 0 24px 60px -20px oklch(0.22 0.04 55 / 0.22);
   --gradient-warm: linear-gradient(135deg, oklch(0.95 0.04 70) 0%, oklch(0.92 0.05 55) 100%);
   --gradient-clay: linear-gradient(135deg, var(--clay) 0%, oklch(0.55 0.12 50) 100%);
+  --mesh-clay: oklch(0.84 0.08 54 / 0.2);
+  --mesh-honey: oklch(0.9 0.075 84 / 0.35);
+  --mesh-sand: oklch(0.89 0.043 68 / 0.27);
 }
 
 :root.dark {
@@ -126,6 +129,9 @@
   --shadow-elev: 0 28px 70px -24px oklch(0.02 0.01 60 / 0.72);
   --gradient-warm: linear-gradient(135deg, oklch(0.25 0.046 58) 0%, oklch(0.31 0.055 42) 100%);
   --gradient-clay: linear-gradient(135deg, var(--clay) 0%, oklch(0.66 0.12 45) 100%);
+  --mesh-clay: oklch(0.36 0.073 49 / 0.26);
+  --mesh-honey: oklch(0.32 0.064 75 / 0.28);
+  --mesh-sand: oklch(0.27 0.041 57 / 0.4);
 }
 
 @layer base {
@@ -176,9 +182,55 @@
   .text-pretty {
     text-wrap: pretty;
   }
-  .bg-grain {
-    background-image: radial-gradient(oklch(0.46 0.1 45 / 0.04) 1px, transparent 1px);
-    background-size: 24px 24px;
+  .site-mesh {
+    background:
+      radial-gradient(ellipse 58% 51% at 3% 49%, var(--mesh-honey), transparent 92%),
+      radial-gradient(ellipse 51% 54% at 98% 53%, var(--mesh-clay), transparent 85%),
+      var(--background);
+  }
+  .site-mesh-alt {
+    background:
+      radial-gradient(ellipse 56% 51% at 4% 53%, var(--mesh-clay), transparent 88%),
+      radial-gradient(ellipse 52% 53% at 95% 48%, var(--mesh-honey), transparent 88%),
+      linear-gradient(var(--background), var(--warm) 50%, var(--background));
+  }
+  .site-mesh-hero {
+    background:
+      radial-gradient(ellipse 61% 82% at 100% 12%, var(--mesh-clay), transparent 87%),
+      radial-gradient(ellipse 60% 58% at 1% 61%, var(--mesh-honey), transparent 66%),
+      var(--background);
+  }
+  .hero-blob {
+    position: absolute;
+    inset-block-start: 13%;
+    inset-inline-end: -18%;
+    width: min(90vw, 29rem);
+    aspect-ratio: 5 / 4;
+    pointer-events: none;
+    border-radius: 57% 43% 65% 35% / 44% 58% 42% 56%;
+    background:
+      radial-gradient(ellipse at 62% 35%, var(--mesh-clay), transparent 65%),
+      radial-gradient(ellipse at 35% 53%, var(--mesh-sand), transparent 63%);
+  }
+  @media (min-width: 768px) {
+    .hero-blob {
+      inset-inline-end: 23%;
+      width: min(47vw, 29rem);
+    }
+  }
+  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .hero-blob {
+      transition: transform 650ms ease-out;
+    }
+  }
+  .site-mesh-contact {
+    background:
+      radial-gradient(
+        ellipse 68% 65% at 88% 14%,
+        color-mix(in oklab, var(--ink) 14%, transparent),
+        transparent 89%
+      ),
+      var(--clay);
   }
   .gradient-warm {
     background: var(--gradient-warm);
