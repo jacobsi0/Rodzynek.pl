@@ -120,11 +120,24 @@ export const publicContent = {
       body: "Jesteśmy studentami Uniwersytetu Łódzkiego. Wierzymy, że rozmowa rówieśnika z rówieśnikiem zmienia więcej niż jakikolwiek podręcznik. Warsztaty o presji społecznej - przez młodych, dla młodych.",
       primaryCta: "Nasze warsztaty",
       secondaryCta: "Poznaj nas",
-      cards: [
-        ["Peer Support", "Wsparcie od rówieśnika do rówieśnika"],
-        ["Bezpieczna przestrzeń", "Bez oceniania, z empatią"],
-        ["Profilaktyka presji", "Praktyczne narzędzia na co dzień"],
-      ],
+      collage: {
+        workshop: {
+          caption: "Warsztaty w XXXIV LO",
+          alt: "Zespół Rodzynka trzyma plakat przygotowany podczas warsztatów w Łodzi.",
+        },
+        backstage: {
+          caption: "Kulisy Rodzynka",
+          alt: "Trzy osoby z zespołu Rodzynka rozmawiają przed budynkiem.",
+        },
+        beYourself: {
+          title: "Nie musisz udawać",
+          body: "Możesz być sobą, nawet jeśli masz inne zdanie niż reszta grupy.",
+        },
+        sayNo: {
+          title: "Możesz powiedzieć NIE",
+          body: "Gdy coś Ci nie pasuje, możesz po prostu powiedzieć „Nie, dzięki”.",
+        },
+      },
       marquee: [
         "Asertywność",
         "Granice",
@@ -512,11 +525,24 @@ export const publicContent = {
       body: "We are students from the University of Lodz. We believe that a peer-to-peer conversation can change more than any textbook. Workshops about social pressure - by young people, for young people.",
       primaryCta: "Our workshops",
       secondaryCta: "Meet us",
-      cards: [
-        ["Peer Support", "Support from young people to young people"],
-        ["Safe space", "No judgement, with empathy"],
-        ["Pressure prevention", "Practical tools for everyday situations"],
-      ],
+      collage: {
+        workshop: {
+          caption: "Workshop at High School No. 34",
+          alt: "The Rodzynek team holds up a poster made during the workshop in Łódź.",
+        },
+        backstage: {
+          caption: "Behind the scenes",
+          alt: "Three members of the Rodzynek team chat outside.",
+        },
+        beYourself: {
+          title: "You don’t have to pretend",
+          body: "You can be yourself, even when you see things differently from the rest of the group.",
+        },
+        sayNo: {
+          title: "You can say NO",
+          body: "If something doesn’t feel right, a simple ‘No, thanks’ is enough.",
+        },
+      },
       marquee: [
         "Assertiveness",
         "Boundaries",

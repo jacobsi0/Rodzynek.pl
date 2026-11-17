@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Sparkles, ArrowRight, HeartHandshake, MessageCircle, Shield } from "lucide-react";
+import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
 import { getHomeSectionHref, publicContent, type Locale } from "@/lib/public-content";
 
 function HeroBackdrop() {
@@ -67,61 +67,48 @@ function HeroBackdrop() {
   return <div ref={blobRef} aria-hidden="true" className="hero-blob" />;
 }
 
-function FloatCard({
-  icon,
-  title,
-  desc,
-  tone,
-  className = "",
+function Polaroid({
+  src,
+  height,
+  caption,
+  alt,
+  className,
 }: {
-  icon: React.ReactNode;
-  title: string;
-  desc: string;
-  tone: "clay" | "honey" | "sand";
-  className?: string;
+  src: string;
+  height: number;
+  caption: string;
+  alt: string;
+  className: string;
 }) {
-  const toneClass =
-    tone === "clay"
-      ? "bg-clay-soft text-clay"
-      : tone === "honey"
-        ? "bg-honey/30 text-ink"
-        : "bg-sand text-ink-soft";
   return (
-    <div
-      className={`flex w-[19rem] items-center gap-3 rounded-2xl bg-card p-4 shadow-soft ${className}`}
-    >
-      <div
-        className={`flex h-11 w-11 flex-none items-center justify-center rounded-xl ${toneClass}`}
-      >
-        {icon}
-      </div>
-      <div>
-        <div className="text-sm font-semibold">{title}</div>
-        <div className="text-xs text-muted-foreground">{desc}</div>
-      </div>
-    </div>
+    <figure className={`hero-polaroid ${className}`}>
+      <img src={src} alt={alt} width={560} height={height} decoding="async" />
+      <figcaption>{caption}</figcaption>
+    </figure>
+  );
+}
+
+function Memo({ title, body, className }: { title: string; body: string; className: string }) {
+  return (
+    <details className={`hero-memo ${className}`}>
+      <summary>
+        {title}
+        <ChevronDown aria-hidden="true" className="hero-memo-arrow" />
+      </summary>
+      <p>{body}</p>
+    </details>
   );
 }
 
 export function Hero({ locale = "pl" }: { locale?: Locale }) {
   const t = publicContent[locale].hero;
-  const icons = [
-    <HeartHandshake className="h-5 w-5" />,
-    <MessageCircle className="h-5 w-5" />,
-    <Shield className="h-5 w-5" />,
-  ];
-  const tones = ["clay", "honey", "sand"] as const;
-  const classes = [
-    "animate-float",
-    "ml-10 animate-float [animation-delay:1.2s]",
-    "animate-float [animation-delay:2.4s]",
-  ];
+  const { workshop, backstage, beYourself, sayNo } = t.collage;
 
   return (
     <section className="site-mesh-hero relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-28">
       <HeroBackdrop />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 md:grid-cols-[1.1fr_1fr] md:px-10">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 md:px-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
         <div className="animate-fade-up">
           <span className="inline-flex items-center gap-2 rounded-full border border-clay/20 bg-warm px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-clay">
             <Sparkles className="h-3.5 w-3.5" />
@@ -150,20 +137,21 @@ export function Hero({ locale = "pl" }: { locale?: Locale }) {
           </div>
         </div>
 
-        <div className="relative h-[28rem] md:h-[34rem]">
-          <div className="absolute inset-0 rounded-[2.5rem] gradient-warm shadow-elev" />
-          <div className="absolute inset-6 flex flex-col justify-center gap-4">
-            {t.cards.map(([title, desc], i) => (
-              <FloatCard
-                key={title}
-                icon={icons[i]}
-                title={title}
-                desc={desc}
-                tone={tones[i]}
-                className={classes[i]}
-              />
-            ))}
-          </div>
+        <div className="hero-collage">
+          <Polaroid
+            src="/hero/warsztaty.jpg"
+            height={700}
+            className="hero-polaroid-workshop"
+            {...workshop}
+          />
+          <Memo className="hero-memo-honey" {...beYourself} />
+          <Memo className="hero-memo-clay" {...sayNo} />
+          <Polaroid
+            src="/hero/kulisy.jpg"
+            height={743}
+            className="hero-polaroid-backstage"
+            {...backstage}
+          />
         </div>
       </div>
     </section>
