@@ -15,7 +15,7 @@ import {
 import { publicContent, type Locale } from "@/lib/public-content";
 import { SectionLabel, SectionTitle } from "./shell";
 
-function CarouselMedia({ images }: { images: string[] }) {
+function CarouselMedia({ images }: { images: readonly string[] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -69,13 +69,23 @@ function CarouselMedia({ images }: { images: string[] }) {
   );
 }
 
-function ReelMedia({ videoSrc }: { videoSrc: string }) {
+function ReelMedia({
+  videoSrc,
+  label,
+  muteLabel,
+  unmuteLabel,
+  showFullFrame,
+}: {
+  videoSrc: string;
+  label: string;
+  muteLabel: string;
+  unmuteLabel: string;
+  showFullFrame?: boolean;
+}) {
   const [muted, setMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const toggleSound = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const toggleSound = () => {
     if (videoRef.current) {
       videoRef.current.muted = !muted;
       setMuted(!muted);
@@ -91,16 +101,16 @@ function ReelMedia({ videoSrc }: { videoSrc: string }) {
         loop
         muted={muted}
         playsInline
-        className="h-full w-full object-cover"
+        className={`h-full w-full ${showFullFrame ? "object-contain" : "object-cover"}`}
       />
 
       {/* Przycisk wyciszania / włączania dźwięku */}
       <button
         type="button"
         onClick={toggleSound}
-        aria-label={muted ? "Włącz dźwięk" : "Wycisz dźwięk"}
-        title={muted ? "Włącz dźwięk" : "Wycisz dźwięk"}
-        className="absolute bottom-2.5 right-2.5 flex h-8 w-8 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur transition hover:scale-110 hover:bg-black/85"
+        aria-label={muted ? unmuteLabel : muteLabel}
+        title={muted ? unmuteLabel : muteLabel}
+        className="absolute bottom-2.5 right-2.5 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/65 text-white backdrop-blur transition hover:scale-110 hover:bg-black/85"
       >
         {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4 text-clay" />}
       </button>
@@ -108,18 +118,18 @@ function ReelMedia({ videoSrc }: { videoSrc: string }) {
       {/* Wskaźnik wideo / rolki */}
       <div className="absolute top-2.5 left-2.5 flex items-center gap-1 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-bold text-white backdrop-blur">
         <Video className="h-3 w-3" />
-        <span>Rolka</span>
+        <span>{label}</span>
       </div>
     </div>
   );
 }
 
-function StaticMedia({ imageSrc }: { imageSrc: string }) {
+function StaticMedia({ imageSrc, alt }: { imageSrc: string; alt: string }) {
   return (
     <div className="relative aspect-square w-full overflow-hidden rounded-2xl bg-neutral-900">
       <img
         src={imageSrc}
-        alt="Post na Instagramie"
+        alt={alt}
         loading="lazy"
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
@@ -166,21 +176,23 @@ export function InstagramFeed({ locale = "pl" }: { locale?: Locale }) {
         {/* Siatka postów */}
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {t.posts.map((post, i) => (
-            <a
+            <article
               key={post.title}
-              href={post.url ?? t.url}
-              target="_blank"
-              rel="noreferrer"
-              className="reveal group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-4 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-clay/40 hover:shadow-elev"
+              className="reveal group relative isolate flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-card p-4 shadow-soft transition-all duration-300 hover:-translate-y-1.5 hover:border-clay/40 hover:shadow-elev"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
               <div>
                 {/* Nagłówek posta */}
                 <div className="flex items-center justify-between gap-2 border-b border-border pb-3">
                   <div className="flex items-center gap-2">
-                    <div className="flex h-7 w-7 items-center justify-center rounded-full bg-clay text-xs font-black text-primary-foreground">
-                      🍇
-                    </div>
+                    <img
+                      src="/instagram/profilowe.jpg"
+                      alt=""
+                      width={28}
+                      height={28}
+                      loading="lazy"
+                      className="h-7 w-7 shrink-0 rounded-full object-cover"
+                    />
                     <div>
                       <span className="block text-xs font-bold leading-none text-foreground">
                         rodzynekedu
@@ -199,8 +211,18 @@ export function InstagramFeed({ locale = "pl" }: { locale?: Locale }) {
                 {/* Multimedia: Karuzela / Rolka Wideo / Zdjęcie statyczne */}
                 <div className="mt-3">
                   {post.media?.type === "carousel" && <CarouselMedia images={post.media.images} />}
-                  {post.media?.type === "video" && <ReelMedia videoSrc={post.media.video} />}
-                  {post.media?.type === "image" && <StaticMedia imageSrc={post.media.image} />}
+                  {post.media?.type === "video" && (
+                    <ReelMedia
+                      videoSrc={post.media.video}
+                      label={post.type}
+                      muteLabel={t.mute}
+                      unmuteLabel={t.unmute}
+                      showFullFrame={"showFullFrame" in post.media && post.media.showFullFrame}
+                    />
+                  )}
+                  {post.media?.type === "image" && (
+                    <StaticMedia imageSrc={post.media.image} alt={post.title} />
+                  )}
                 </div>
 
                 {/* Tytuł i opis */}
@@ -214,6 +236,30 @@ export function InstagramFeed({ locale = "pl" }: { locale?: Locale }) {
                   <p className="mt-2 text-xs leading-relaxed text-muted-foreground line-clamp-2">
                     {post.excerpt}
                   </p>
+                  {"caption" in post && (
+                    <details className="relative z-10 mt-1.5 text-xs leading-relaxed text-muted-foreground">
+                      <summary className="w-fit cursor-pointer font-semibold text-clay hover:underline">
+                        {t.readMore}
+                      </summary>
+                      <div className="mt-2 space-y-2">
+                        {post.caption.paragraphs.map((paragraph) => (
+                          <p key={paragraph}>{paragraph}</p>
+                        ))}
+                        <p>
+                          {post.caption.creditBefore}
+                          <a
+                            href="https://www.instagram.com/fundacja_edukabe/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="font-semibold text-clay underline"
+                          >
+                            @fundacja_edukabe
+                          </a>
+                          {post.caption.creditAfter}
+                        </p>
+                      </div>
+                    </details>
+                  )}
                 </div>
               </div>
 
@@ -222,31 +268,37 @@ export function InstagramFeed({ locale = "pl" }: { locale?: Locale }) {
                 <div className="flex items-center gap-2.5">
                   <span
                     className="flex items-center gap-1 text-rose-500 font-medium"
-                    title="Polubienia"
+                    title={t.likesLabel}
                   >
                     <Heart className="h-3.5 w-3.5 fill-rose-500" />
                     {post.likes}
                   </span>
                   <span
                     className="flex items-center gap-1 text-muted-foreground"
-                    title="Komentarze"
+                    title={t.commentsLabel}
                   >
                     <MessageCircle className="h-3.5 w-3.5" />
                     {post.comments ?? "0"}
                   </span>
                   <span
                     className="flex items-center gap-1 text-muted-foreground"
-                    title="Podania dalej"
+                    title={t.sharesLabel}
                   >
                     <Send className="h-3.5 w-3.5" />
                     {post.shares ?? "0"}
                   </span>
                 </div>
-                <span className="text-[11px] font-semibold text-clay flex items-center gap-1 group-hover:underline">
-                  Otwórz na IG <ExternalLink className="h-3 w-3" />
-                </span>
+                <a
+                  href={post.url ?? t.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${t.openOnInstagram} – ${post.title}`}
+                  className="flex items-center gap-1 text-[11px] font-semibold text-clay after:absolute after:inset-0 group-hover:underline focus-visible:underline"
+                >
+                  {t.openOnInstagram} <ExternalLink className="h-3 w-3" />
+                </a>
               </div>
-            </a>
+            </article>
           ))}
         </div>
       </div>
