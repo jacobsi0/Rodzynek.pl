@@ -3,6 +3,8 @@ import { ChevronDown, Puzzle, Smartphone } from "lucide-react";
 import { publicContent, type Locale } from "@/lib/public-content";
 import { SectionLabel, SectionTitle } from "./shell";
 
+const WORKSHOP_CAPACITY = 3;
+
 const getAvailabilityTextPl = (remaining: number) => {
   if (remaining === 0) {
     return "Brak wolnych miejsc na warsztaty w nadchodzącym roku szkolnym (26-27).";
@@ -31,6 +33,8 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
   const [bookedCount, setBookedCount] = useState<number | null>(null);
 
   const t = publicContent[locale].workshops;
+  const currentBookedCount = bookedCount ?? 1;
+  const remaining = Math.max(0, WORKSHOP_CAPACITY - currentBookedCount);
   const icons = [<Puzzle className="h-6 w-6" />, <Smartphone className="h-6 w-6" />];
   const accents = ["bg-clay", "bg-clay"] as const;
 
@@ -72,15 +76,15 @@ export function Workshops({ locale = "pl" }: { locale?: Locale }) {
           <p className="mt-5 text-xl font-semibold leading-relaxed text-clay">
             {bookedCount !== null
               ? locale === "pl"
-                ? getAvailabilityTextPl(Math.max(0, 4 - bookedCount))
-                : getAvailabilityTextEn(Math.max(0, 4 - bookedCount))
+                ? getAvailabilityTextPl(remaining)
+                : getAvailabilityTextEn(remaining)
               : t.availabilityNotice}
           </p>
 
           {/* Wizualny tracker slotów */}
           <div className="reveal mt-8 flex flex-wrap justify-center gap-3">
-            {Array.from({ length: 4 }).map((_, idx) => {
-              const isBooked = bookedCount !== null ? idx < bookedCount : idx < 1;
+            {Array.from({ length: WORKSHOP_CAPACITY }).map((_, idx) => {
+              const isBooked = idx < currentBookedCount;
               return (
                 <div
                   key={idx}
